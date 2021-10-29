@@ -9,10 +9,14 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
+        private IScanRepository _scanRepository;
+        private IFaceRepository _faceRepository;
+ 
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
+
         }
 
         public ICompanyRepository Company
@@ -36,11 +40,34 @@ namespace Repository
                 return _employeeRepository;
             }
         }
+
+        public IScanRepository ScanData
+        {
+            get
+            {
+                if (_scanRepository == null)
+                    _scanRepository = new ScanRepository(_repositoryContext);
+
+                return _scanRepository;
+            }
+        }
+
+        public IFaceRepository FaceData
+        {
+            get
+            {
+                if (_faceRepository == null)
+                    _faceRepository = new FaceRepository(_repositoryContext);
+
+                return _faceRepository;
+            }
+        }
+
         /// <summary>
         /// Synchronous Method
         /// </summary>
         /// 
-        /// public void Save() => _repositoryContext.SaveChanges();
+        //public void Save() => _repositoryContext.SaveChanges();
 
 
         /// <summary>

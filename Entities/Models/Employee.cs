@@ -15,7 +15,11 @@ namespace Entities.Models
 
         [Required(ErrorMessage = "Employee name is a required field.")]
         [MaxLength(30, ErrorMessage = "Maximum length for the Name is 30 characters.")]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Employee name is a required field.")]
+        [MaxLength(30, ErrorMessage = "Maximum length for the Name is 30 characters.")]
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "Age is a required field.")]
         public int Age { get; set; }
@@ -27,5 +31,10 @@ namespace Entities.Models
         [ForeignKey(nameof(Company))]
         public Guid CompanyId { get; set; }
         public Company Company { get; set; }
+
+        public string GetFullName()
+        {
+            return $"{this.LastName}, {this.FirstName}";
+        }
     }
 }

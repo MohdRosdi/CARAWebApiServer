@@ -16,6 +16,16 @@ namespace CARAAPI
                     .ForMember(c => c.FullAddress,
                         opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
 
+            CreateMap<ScanData, ScanDto>();
+
+            CreateMap<ScanDto, ScanData>();
+
+            CreateMap<ScanForCreationDto, ScanData>();
+
+            CreateMap<FaceForCreationDto, Face>();
+
+            CreateMap<Face, FaceDto>();
+
             CreateMap<Employee, EmployeeDto>();
 
             CreateMap<CompanyForCreationDto, Company>();
@@ -29,6 +39,16 @@ namespace CARAAPI
             CreateMap<CompanyForUpdateDto, Company>();
 
             CreateMap<UserForRegistrationDto, User>();
+        }
+
+        static Mapper InitializeAutomapper()
+        {
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Face, FaceDto>();
+                cfg.CreateMap<ScanData, ScanDto>();
+            });
+            var mapper = new Mapper(config);
+            return mapper;
         }
     }
 }

@@ -2,19 +2,19 @@
 
 namespace CARAAPI.Migrations
 {
-    public partial class AddedRolesToDb : Migration
+    public partial class Identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "33827aab-3c91-4d3b-b9ce-e74a4126bed1", "dcaae92c-20f9-4cbb-994a-728326dd6069", "Manager", "MANAGER" });
+                values: new object[] { "3d7a8c3c-ff96-4cca-b589-31509cb3e532", "2bab47c6-1b1b-41a1-8c0a-f1bf150a087c", "Manager", "MANAGER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "d2e26205-db9e-4701-bba1-6873fb2dd696", "8a650153-624b-49a1-896e-6356a56f2259", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "a72cdcb6-9028-4576-b3de-28e311a6de27", "f4f1a486-3fbb-4d0c-b973-838561dd4f91", "Administrator", "ADMINISTRATOR" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -22,12 +22,12 @@ namespace CARAAPI.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "33827aab-3c91-4d3b-b9ce-e74a4126bed1");
+                keyValue: "3d7a8c3c-ff96-4cca-b589-31509cb3e532");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "d2e26205-db9e-4701-bba1-6873fb2dd696");
+                keyValue: "a72cdcb6-9028-4576-b3de-28e311a6de27");
         }
     }
 }

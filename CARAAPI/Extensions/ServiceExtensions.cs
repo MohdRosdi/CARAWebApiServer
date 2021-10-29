@@ -48,10 +48,17 @@ namespace CARAAPI.Extensions
             services.AddScoped<ILoggerManager, LoggerManager>();
 
         public static void ConfigureSqlContext(this IServiceCollection services,
-            IConfiguration configuration) =>
+            IConfiguration configuration)
+        {
+
             services.AddDbContext<RepositoryContext>(opts =>
-            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b =>
-            b.MigrationsAssembly("CARAAPI")));
+            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+            //, b => b.MigrationsAssembly("CARAAPI")));
+            //services.AddDbContext<ScanDataContext>(opts =>
+            //opts.UseSqlServer(configuration.GetConnectionString("scanContext"),
+            //b => b.MigrationsAssembly("CARAAPI")));
+        }
+
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();

@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CARAAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20211008073725_AddedRolesToDb")]
-    partial class AddedRolesToDb
+    [Migration("20211027114114_DatabaseCreation")]
+    partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Entities.Models.Company", b =>
@@ -214,22 +214,6 @@ namespace CARAAPI.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "33827aab-3c91-4d3b-b9ce-e74a4126bed1",
-                            ConcurrencyStamp = "dcaae92c-20f9-4cbb-994a-728326dd6069",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        },
-                        new
-                        {
-                            Id = "d2e26205-db9e-4701-bba1-6873fb2dd696",
-                            ConcurrencyStamp = "8a650153-624b-49a1-896e-6356a56f2259",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

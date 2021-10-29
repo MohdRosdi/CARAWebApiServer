@@ -19,19 +19,19 @@ namespace Repository.Extensions
         {
             if (string.IsNullOrWhiteSpace(searchTerm)) return employees; 
             var lowerCaseTerm = searchTerm.Trim().ToLower(); 
-            return employees.Where(e => e.Name.ToLower().Contains(lowerCaseTerm));
+            return employees.Where(e => e.FirstName.ToLower().Contains(lowerCaseTerm));
         }
 
         public static IQueryable<Employee> Sort(this IQueryable<Employee> employees, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString)) 
-                return employees.OrderBy(e => e.Name);
+                return employees.OrderBy(e => e.FirstName);
 
 
             var orderQuery = OrderQueryBuilder.CreateOrderQuery<Employee>(orderByQueryString);
             
             if (string.IsNullOrWhiteSpace(orderQuery))
-                return employees.OrderBy(e => e.Name);
+                return employees.OrderBy(e => e.FirstName);
             
             return employees.OrderBy(orderQuery);
 

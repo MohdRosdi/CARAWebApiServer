@@ -4,14 +4,16 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CARAAPI.Migrations
+namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20211029143035_update Class")]
+    partial class updateClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +75,12 @@ namespace CARAAPI.Migrations
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
@@ -95,7 +102,8 @@ namespace CARAAPI.Migrations
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
                             Age = 46,
                             CompanyId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Name = "Mohd Rosdi Bin Sulaiman",
+                            FirstName = "Mohd Rosdi ",
+                            LastName = "Sulaiman",
                             Position = "Software developer"
                         },
                         new
@@ -103,7 +111,8 @@ namespace CARAAPI.Migrations
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
                             Age = 30,
                             CompanyId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Name = "Jana McLeaf",
+                            FirstName = "Jana",
+                            LastName = "McLeaf",
                             Position = "Software developer"
                         },
                         new
@@ -111,8 +120,262 @@ namespace CARAAPI.Migrations
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
                             Age = 35,
                             CompanyId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
-                            Name = "Kane Miller",
+                            FirstName = "Kane",
+                            LastName = "Miller",
                             Position = "Administrator"
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.Face", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("FaceId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("address");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int")
+                        .HasColumnName("age");
+
+                    b.Property<int>("AttrAge")
+                        .HasColumnType("int")
+                        .HasColumnName("attrAge");
+
+                    b.Property<int>("AttrBeauty")
+                        .HasColumnType("int")
+                        .HasColumnName("attrBeauty");
+
+                    b.Property<string>("AuthType")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("authType");
+
+                    b.Property<string>("CardNum")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("cardNum");
+
+                    b.Property<string>("CertificateNumber")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("certificateNumber");
+
+                    b.Property<int>("CertificateType")
+                        .HasColumnType("int")
+                        .HasColumnName("certificateType");
+
+                    b.Property<string>("CommonUuid")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("commonUuid");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("email");
+
+                    b.Property<string>("Ethic")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ethic");
+
+                    b.Property<double>("FaceTemperature")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("gender");
+
+                    b.Property<string>("GroupId")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("groupId");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image");
+
+                    b.Property<string>("Irimg")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("irimg");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Orgimg")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("orgimg");
+
+                    b.Property<string>("PersonId")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("personId");
+
+                    b.Property<string>("PersonUuid")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("personUuid");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("phone");
+
+                    b.Property<string>("PlateId")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("plateId");
+
+                    b.Property<string>("QRcode")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("QRcode");
+
+                    b.Property<int>("ScanId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Similarity")
+                        .HasColumnType("float")
+                        .HasColumnName("similarity");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("status");
+
+                    b.Property<string>("TemperatureAlarm")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("temperatureAlarm");
+
+                    b.Property<long>("Timestamp")
+                        .HasColumnType("bigint")
+                        .HasColumnName("timestamp");
+
+                    b.Property<int>("TrackId")
+                        .HasColumnType("int")
+                        .HasColumnName("trackId");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("userId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScanId");
+
+                    b.ToTable("Faces");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 0,
+                            AttrAge = 0,
+                            AttrBeauty = 0,
+                            CertificateType = 0,
+                            FaceTemperature = 36.692287445068359,
+                            Name = "Mohd Rosdi",
+                            ScanId = 1,
+                            Similarity = 0.0,
+                            TemperatureAlarm = "Normal",
+                            Timestamp = 1635312105L,
+                            TrackId = 0,
+                            UserId = "CCM025"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 0,
+                            AttrAge = 0,
+                            AttrBeauty = 0,
+                            CertificateType = 0,
+                            FaceTemperature = 36.692287445068359,
+                            Name = "Siti Seha",
+                            ScanId = 2,
+                            Similarity = 0.0,
+                            TemperatureAlarm = "Normal",
+                            Timestamp = 1635312205L,
+                            TrackId = 0,
+                            UserId = "CCM026"
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.ScanData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ScanId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Camid")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("camid");
+
+                    b.Property<string>("Devid")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("devid");
+
+                    b.Property<string>("Devmac")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("devmac");
+
+                    b.Property<string>("Devname")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("devname");
+
+                    b.Property<string>("Devno")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("devno");
+
+                    b.Property<string>("Event")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("event");
+
+                    b.Property<string>("Operator")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("operator");
+
+                    b.Property<DateTime>("PublishedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Time")
+                        .HasColumnType("int")
+                        .HasColumnName("time");
+
+                    b.Property<int>("Timelocal")
+                        .HasColumnType("int")
+                        .HasColumnName("timelocal");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ScanDatas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Camid = "Camera0",
+                            Devid = "FF008100",
+                            Devmac = "",
+                            Devname = "Device IN",
+                            Devno = "",
+                            Event = "common",
+                            Operator = "faceRegCaptureUpload",
+                            PublishedDate = new DateTime(2021, 10, 29, 22, 30, 35, 315, DateTimeKind.Local).AddTicks(9303),
+                            Time = 1635312120,
+                            Timelocal = 1635312105
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Camid = "Camera1",
+                            Devid = "101",
+                            Devmac = "",
+                            Devname = "Device OUT",
+                            Devno = "",
+                            Event = "common",
+                            Operator = "faceRegCaptureUpload",
+                            PublishedDate = new DateTime(2021, 10, 29, 22, 30, 35, 316, DateTimeKind.Local).AddTicks(1496),
+                            Time = 1635312120,
+                            Timelocal = 1635312105
                         });
                 });
 
@@ -216,15 +479,15 @@ namespace CARAAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3d7a8c3c-ff96-4cca-b589-31509cb3e532",
-                            ConcurrencyStamp = "2bab47c6-1b1b-41a1-8c0a-f1bf150a087c",
+                            Id = "68b2cf89-590d-4c74-8cf2-f42d010db77e",
+                            ConcurrencyStamp = "fc9cf089-5467-445e-af46-2944a741ee65",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "a72cdcb6-9028-4576-b3de-28e311a6de27",
-                            ConcurrencyStamp = "f4f1a486-3fbb-4d0c-b973-838561dd4f91",
+                            Id = "6baaf171-f118-4d49-a702-f9664f098d59",
+                            ConcurrencyStamp = "b9f0e879-8def-432a-8561-30685e3f6b3a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -345,6 +608,17 @@ namespace CARAAPI.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("Entities.Models.Face", b =>
+                {
+                    b.HasOne("Entities.Models.ScanData", "ScanData")
+                        .WithMany("Faces")
+                        .HasForeignKey("ScanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ScanData");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -399,6 +673,11 @@ namespace CARAAPI.Migrations
             modelBuilder.Entity("Entities.Models.Company", b =>
                 {
                     b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("Entities.Models.ScanData", b =>
+                {
+                    b.Navigation("Faces");
                 });
 #pragma warning restore 612, 618
         }
