@@ -17,14 +17,15 @@ namespace CARAAPI
                         opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
 
             CreateMap<ScanData, ScanDto>();
-
+            CreateMap<Face, FaceDto>();
+            CreateMap<ScanForCreationDto, ScanData>();
             CreateMap<ScanDto, ScanData>();
 
             CreateMap<ScanForCreationDto, ScanData>();
 
             CreateMap<FaceForCreationDto, Face>();
 
-            CreateMap<Face, FaceDto>();
+           
 
             CreateMap<Employee, EmployeeDto>();
 
@@ -41,14 +42,5 @@ namespace CARAAPI
             CreateMap<UserForRegistrationDto, User>();
         }
 
-        static Mapper InitializeAutomapper()
-        {
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Face, FaceDto>();
-                cfg.CreateMap<ScanData, ScanDto>();
-            });
-            var mapper = new Mapper(config);
-            return mapper;
-        }
     }
 }

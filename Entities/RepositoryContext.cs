@@ -26,8 +26,8 @@ namespace Entities
             modelBuilder.ApplyConfiguration(new CompanyConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new ScanConfiguration());
-            modelBuilder.ApplyConfiguration(new FaceConfiguration());
+            //modelBuilder.ApplyConfiguration(new ScanConfiguration());
+            //modelBuilder.ApplyConfiguration(new FaceConfiguration());
         }
 
         public DbSet<Company> Companies { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,23 +11,30 @@ namespace Entities.DataTransferObjects
 {
     public class ScanForCreationDto
     {
-        [Column("devid")]
-        public string Devid { get; set; }
-        [Column("devname")]
-        public string Devname { get; set; }
+        [JsonProperty("camid")]
+        public string Camid { get; set; }
 
-        [Column("operator")]
+        [JsonProperty("devid")]
+        public string Devid { get; set; }
+        [JsonProperty("devname")]
+        public string Devname { get; set; }
+        [JsonProperty("devno")]
+        public string Devno { get; set; }
+        [JsonProperty("event")]
+        public string Event { get; set; }
+
+        [JsonProperty("operator")]
         public string Operator { get; set; }
 
-        [Column("time")]
+        [JsonProperty("time")]
         public string Time { get; set; }
 
-        [Column("timelocal")]
+        [JsonProperty("timelocal")]
         public string Timelocal { get; set; }
 
         public DateTime PublishedDate { get; set; }
 
-        public ICollection<Face> Faces { get; set; }
+        public List<Face> Faces { get; set; }
 
     }
 }

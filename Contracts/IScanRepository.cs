@@ -9,8 +9,8 @@ namespace Contracts
 {
     public interface IScanRepository
     {
-
         IEnumerable<ScanData> GetAllScannedData(bool trackChanges);
-
+        ScanData GetScanDataById(int scanId, bool trackChanges);
+        void AddScanData(ScanData scanData);
     }
 }

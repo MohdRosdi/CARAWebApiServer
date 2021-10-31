@@ -10,20 +10,9 @@ namespace Entities.DataTransferObjects
 {
     public class ScanDto
     {
-        
-        public string name { get; set; }
+        public int Id { get; set; }
         public string ScanLocation { get; set; }
-        public double temperature { get; set; }
-        
-        public double FaceTemperature { get; set; }
-        
-        public long timestamp { get; set; }
-        
-        public string userId { get; set; }
-        
-        public string image { get; set; }
-        
-        
-
+        public int Time { get; set; }
+        public DateTime LoggedDate { get; set; }
     }
 }

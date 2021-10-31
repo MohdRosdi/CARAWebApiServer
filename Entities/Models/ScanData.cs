@@ -17,65 +17,43 @@ namespace Entities.Models
         [Column("ScanId")]
         public int Id { get; set; }
 
-        [Column("camid")]
+        [JsonProperty("camid")]
         public string Camid { get; set; }
 
-        [Column("devid")]
+        [JsonProperty("devid")]
         public string Devid { get; set; }
 
-        [Column("devmac")]
+        [JsonProperty("devmac")]
         public string Devmac { get; set; }
 
-        [Column("devname")]
+        [JsonProperty("devname")]
         public string Devname { get; set; }
 
-        [Column("devno")]
+        [JsonProperty("devno")]
         public string Devno { get; set; }
 
-        [Column("event")]
+        [JsonProperty("event")]
         public string Event { get; set; }
+        [JsonProperty("faces")]
+        public List<Face> Faces { get; set; }
 
-        public ICollection<Face> Faces { get; set; }
-
-        [Column("operator")]
+        [JsonProperty("operator")]
         public string Operator { get; set; }
 
-        [Column("time")]
+        [JsonProperty("time")]
         public int Time { get; set; }
 
-        [Column("timelocal")]
+        [JsonProperty("timelocal")]
         public int Timelocal { get; set; }
 
-        [Column("type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
-        public DateTime PublishedDate { get; set; } = DateTime.Now;
+        public DateTime LoggedDate { get; set; } = DateTime.Now;
 
         public string GetScanLocation()
         {
             return $"{this.Devid}, {this.Devname}";
         }
-    }
-
-    public partial class ScanData
-    {
-        public static ScanData FromJson(string json) => JsonConvert.DeserializeObject<ScanData>(json, Converter.Settings);
-    }
-
-    public static class Serialize
-    {
-        public static string ToJson(this ScanData self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
     }
 }

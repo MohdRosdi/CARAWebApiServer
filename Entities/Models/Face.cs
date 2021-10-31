@@ -112,6 +112,8 @@ namespace Entities.Models
         [ForeignKey(nameof(ScanData))]
         public int ScanId { get; set; }
         public ScanData ScanData { get; set; }
+
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
     
 }

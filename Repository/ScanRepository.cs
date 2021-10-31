@@ -19,7 +19,11 @@ namespace Repository
            
         }
 
-        public IEnumerable<ScanData> GetAllScannedData(bool trackChanges) => FindAll(trackChanges).OrderBy(c => c.PublishedDate).ToList();
+        public IEnumerable<ScanData> GetAllScannedData(bool trackChanges) => FindAll(trackChanges).OrderBy(c => c.LoggedDate).ToList();
+
+        public ScanData GetScanDataById(int scanId, bool trackChanges) => FindByCondition(s => s.Id.Equals(scanId), trackChanges).SingleOrDefault();
+
+        public void AddScanData(ScanData scanData) => Create(scanData);
     }
         
 }

@@ -168,6 +168,9 @@ namespace Entities.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("commonUuid");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("email");
@@ -255,40 +258,6 @@ namespace Entities.Migrations
                     b.HasIndex("ScanId");
 
                     b.ToTable("Faces");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 0,
-                            AttrAge = 0,
-                            AttrBeauty = 0,
-                            CertificateType = 0,
-                            FaceTemperature = 36.692287445068359,
-                            Name = "Mohd Rosdi",
-                            ScanId = 1,
-                            Similarity = 0.0,
-                            TemperatureAlarm = "Normal",
-                            Timestamp = 1635312105L,
-                            TrackId = 0,
-                            UserId = "CCM025"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 0,
-                            AttrAge = 0,
-                            AttrBeauty = 0,
-                            CertificateType = 0,
-                            FaceTemperature = 36.692287445068359,
-                            Name = "Siti Seha",
-                            ScanId = 2,
-                            Similarity = 0.0,
-                            TemperatureAlarm = "Normal",
-                            Timestamp = 1635312205L,
-                            TrackId = 0,
-                            UserId = "CCM026"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.ScanData", b =>
@@ -300,81 +269,41 @@ namespace Entities.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Camid")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("camid");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Devid")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("devid");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Devmac")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("devmac");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Devname")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("devname");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Devno")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("devno");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Event")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("event");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Operator")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("operator");
-
-                    b.Property<DateTime>("PublishedDate")
+                    b.Property<DateTime>("LoggedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Operator")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Time")
-                        .HasColumnType("int")
-                        .HasColumnName("time");
+                        .HasColumnType("int");
 
                     b.Property<int>("Timelocal")
-                        .HasColumnType("int")
-                        .HasColumnName("timelocal");
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("type");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("ScanDatas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Camid = "Camera0",
-                            Devid = "FF008100",
-                            Devmac = "",
-                            Devname = "Device IN",
-                            Devno = "",
-                            Event = "common",
-                            Operator = "faceRegCaptureUpload",
-                            PublishedDate = new DateTime(2021, 10, 29, 22, 30, 35, 315, DateTimeKind.Local).AddTicks(9303),
-                            Time = 1635312120,
-                            Timelocal = 1635312105
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Camid = "Camera1",
-                            Devid = "101",
-                            Devmac = "",
-                            Devname = "Device OUT",
-                            Devno = "",
-                            Event = "common",
-                            Operator = "faceRegCaptureUpload",
-                            PublishedDate = new DateTime(2021, 10, 29, 22, 30, 35, 316, DateTimeKind.Local).AddTicks(1496),
-                            Time = 1635312120,
-                            Timelocal = 1635312105
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.User", b =>
@@ -477,15 +406,15 @@ namespace Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "68b2cf89-590d-4c74-8cf2-f42d010db77e",
-                            ConcurrencyStamp = "fc9cf089-5467-445e-af46-2944a741ee65",
+                            Id = "8788d855-aa84-4902-a87c-ba01e634091d",
+                            ConcurrencyStamp = "12bae227-624e-4f4c-95e9-279ea5bc93e0",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "6baaf171-f118-4d49-a702-f9664f098d59",
-                            ConcurrencyStamp = "b9f0e879-8def-432a-8561-30685e3f6b3a",
+                            Id = "b20a1dbd-c2e3-496b-96b9-7582aeb13dd2",
+                            ConcurrencyStamp = "ac06522d-d55b-4e9c-8a47-754fd3dc8b7f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

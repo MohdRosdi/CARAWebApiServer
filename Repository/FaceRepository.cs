@@ -16,5 +16,9 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Face> GetFaces(int scanId, bool trackChanges) =>
+            FindByCondition(e => e.ScanId.Equals(scanId), trackChanges).OrderBy(e => e.CreatedDate);
+        public Face GetFaceById(int scanId, int id, bool trackChanges) => FindByCondition(e => e.ScanId.Equals(scanId) && e.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }

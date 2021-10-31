@@ -37,8 +37,6 @@ namespace CARAAPI.Controllers
         [HttpGet] 
         public IActionResult GetScansData() 
         { 
-            try 
-            { 
                 var scanData = _context.ScanData.GetAllScannedData(trackChanges: false);
                 //var scanDTO1 = scanData.Select(d => new ScanDto 
                 //{
@@ -47,13 +45,36 @@ namespace CARAAPI.Controllers
 
                 var scanDto = _mapper.Map<IEnumerable<ScanDto>>(scanData);
                 return Ok(scanDto);
-            } 
+        }
 
-            catch (Exception ex) 
-            { 
-                _logger.LogError($"Something went wrong in the {nameof(GetScansData)} action {ex}"); 
-                return StatusCode(500, "Internal server error"); 
-            } 
+        [HttpGet("{id}", Name = "ScanById")]
+        public IActionResult GetScanDataById(int scanId)
+        {
+            var scanData = _context.ScanData.GetScanDataById(scanId, trackChanges: false);
+           
+            var scanDto = _mapper.Map<ScanDto>(scanData);
+            return Ok(scanDto);
+
+        }
+
+        [HttpPost]
+        public IActionResult AddScanData([FromBody] ScanData scanData)
+        {
+            if (scanData == null)
+            {
+                _logger.LogError("ScanForCreationDto object sent from client is null.");
+                return BadRequest("ScanForCreationDto object is null");
+            }
+            var scanDataEntity = _mapper.Map<ScanData>(scanData); 
+            
+            _context.ScanData.AddScanData(scanDataEntity);
+            _context.Save(); 
+            
+            var scanToReturn = _mapper.Map<ScanDto>(scanDataEntity); 
+            
+            return CreatedAtRoute("ScanById", new { id = scanToReturn.Id }, scanToReturn);
+
+
         }
     }
 }

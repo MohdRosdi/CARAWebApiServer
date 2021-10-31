@@ -14,5 +14,7 @@ namespace Contracts
         //Task<Face> GetFcById(int faceId);
         //Task<Face> AddFcData(Face face);
         //Task<Face> DeleteFc(int faceId);
+        IEnumerable<Face> GetFaces(int scanId, bool trackChanges);
+        Face GetFaceById(int scanId, int id, bool trackChanges);
     }
 }
